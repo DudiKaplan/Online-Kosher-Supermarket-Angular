@@ -1,0 +1,43 @@
+<!--panel A-->
+<div class="mat-elevation-z8 a">
+    <app-login *ngIf="!user || user._id == undefined"></app-login>
+    <app-logout *ngIf="user && user._id"></app-logout>
+</div>
+
+<!--panel B-->
+<div class="mat-elevation-z8 b">
+    <mat-card class="card-main">
+        <mat-card-header>
+            <mat-card-title>No need to leave home anymore ...</mat-card-title>
+        </mat-card-header>
+        <img mat-card-image src="/assets/images/supermarket.jpg" alt="Photo of a Shiba Inu">
+        <mat-card-content>
+            <p>
+                Now, in a few simple steps on the site, you can order a complete purchase of food products, right to your home.
+            </p>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<!--panel C-->
+<div class="mat-elevation-z8 c">
+    <br>
+    <img width="60%" height="30%" src="/assets/images/suparmarket_tubnail.jpg">
+    <br>
+    <hr>
+    <mat-card-title class="color">Available products in our store : {{productsCount}}</mat-card-title>
+    <hr>
+    <mat-card-title class="color">Number of orders submitted in our store : {{ordersCount}}</mat-card-title>
+    <hr>
+    <br>
+    <div class="yellow" *ngIf="user && user.isUser">
+        <mat-card-subtitle *ngIf="openCart && totalPrice">
+            you have open cart form {{openCart.creationDate | date:'medium'}} {{totalPrice}}
+        </mat-card-subtitle>
+        <button *ngIf="openCart && totalPrice" mat-button color="warn" (click)="resumeShopping()">Resume shopping
+      <mat-icon >settings_backup_restore</mat-icon>
+  </button>
+        <mat-card-subtitle *ngIf="closeCart">Your last purchase was - {{closeCart.creationDate | date:'medium'}}</mat-card-subtitle>
+        <mat-card-subtitle *ngIf="firstShop">{{firstShop}}</mat-card-subtitle>
+    </div>
+</div>

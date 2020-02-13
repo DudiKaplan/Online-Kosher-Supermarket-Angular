@@ -1,0 +1,23 @@
+.products {
+    float: left;
+    width: 65vw;
+    height: 83vh;
+    margin: 2px;
+}
+
+.products-area {
+    width: 65vw;
+    height: 75vh;
+    overflow: auto;
+}
+
+mat-form-field.mat-form-field {
+    font-size: 15px;
+    width: 300px;
+    margin-left: 10px;
+}
+
+.info-message {
+    text-align: center;
+    margin-top: 25%;
+}

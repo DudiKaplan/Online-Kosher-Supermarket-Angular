@@ -1,0 +1,23 @@
+<div class="products mat-elevation-z8">
+
+    <!-- categories bar -->
+    <mat-button-toggle-group name="fontStyle" aria-label="Font Style">
+        <mat-button-toggle *ngFor="let c of categories" (click)="getProductsPerCategory(c._id)">{{c.name}}</mat-button-toggle>
+    </mat-button-toggle-group>
+
+    <!-- Search products -->
+    <mat-form-field>
+        <input matInput type="text" placeholder="Product Search" [(ngModel)]="searchValue" (keyup)="getProductByName()">
+        <button mat-button *ngIf="searchValue" matSuffix mat-icon-button aria-label="Clear" (click)="searchValue='';getProductByName()">
+          <mat-icon>close</mat-icon>
+        </button>
+    </mat-form-field>
+
+    <!-- The Products-->
+    <div class="products-area">
+        <app-product *ngFor="let p of products" [name]="p.name" [price]="p.price" [image]="p.imageName" (click)="emitProductID(p._id)"></app-product>
+        <p class="info-message" *ngIf="!products || products.length === 0">{{infoMessage}}</p>
+    </div>
+
+
+</div>

@@ -1,0 +1,27 @@
+.logo {
+    float: left;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 32vw;
+    height: 15vh;
+}
+
+.heder {
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32vw;
+    height: 15vh;
+}
+
+.details {
+    float: left;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 32vw;
+    height: 15vh;
+}

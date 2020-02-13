@@ -1,0 +1,55 @@
+<form #formInfo="ngForm" class="container mat-elevation-z8">
+    <mat-card-title class="title">Registration</mat-card-title>
+    <div class="container-row">
+        <mat-form-field style="width:45%">
+            <input type="text" matInput #firstNameInfo="ngModel" required pattern="^[A-Z].+$" placeholder="First Name" name="firstName" [(ngModel)]="user.firstName" autofocus>
+        </mat-form-field>
+
+        <span *ngIf="firstNameInfo.errors?.pattern && firstNameInfo.dirty || lastNameInfo.errors?.pattern && lastNameInfo.dirty">Min 2 Chars Capitalized</span>
+
+        <mat-form-field style="width:45%">
+            <input type="text" matInput #lastNameInfo="ngModel" required pattern="^[A-Z].+$" placeholder="Last Name" name="lastName" [(ngModel)]="user.lastName">
+        </mat-form-field>
+    </div>
+    <p *ngIf="errorEmail" [style.color]="'red'">{{errorEmail}}</p>
+    <mat-form-field [ngStyle]="errorEmail && {'color': 'red'}">
+        <input type="email" matInput #emailInfo="ngModel" required pattern="^\S+@\S+$" placeholder="Email" name="email" [(ngModel)]="user.email" (keydown)="clearEmailError()">
+    </mat-form-field>
+    <span *ngIf="emailInfo.errors?.pattern && emailInfo.dirty">Not a valid email address</span>
+
+    <p *ngIf="errorPassword" [style.color]="'red'">{{errorPassword}}</p>
+    <div class="container-row">
+        <mat-form-field style="width:45%" [ngStyle]="errorPassword && {'color': 'red'}">
+            <input type="password" matInput #passwordInfo="ngModel" required pattern="^\S{6,}$" placeholder="Password" name="password" [(ngModel)]="user.password" (keydown)="clearPasswordError()">
+        </mat-form-field>
+
+        <span *ngIf="passwordInfo.errors?.pattern && passwordInfo.dirty || passwordConfirmInfo.errors?.pattern && passwordConfirmInfo.dirty">At least 6 characters</span>
+
+        <mat-form-field style="width:45%" [ngStyle]="errorPassword && {'color': 'red'}">
+            <input type="password" matInput #passwordConfirmInfo="ngModel" required pattern="^\S{6,}$" placeholder="Confirm Password" name="passwordConfirm" [(ngModel)]="passwordConfirm" (keydown)="clearPasswordError()">
+        </mat-form-field>
+    </div>
+    <mat-form-field>
+        <input type="tel" matInput #phone="ngModel" required pattern="^\d{3}-\d{3}-\d{4}$" placeholder="Phone" name="phone" [(ngModel)]="user.phone">
+    </mat-form-field>
+    <span *ngIf="phone.errors?.pattern && phone.dirty">Not a valid Phone Number, for example(999-999-9999)</span>
+
+    <div class="container-row">
+        <mat-form-field style="width:45%">
+            <input type="text" matInput required placeholder="Street" name="street" [(ngModel)]="user.street">
+        </mat-form-field>
+
+        <mat-form-field style="width:15%">
+            <input type="number" min="1" #house="ngModel" matInput required pattern="^[1-9]\d*$" placeholder="House" name="houseNumner" [(ngModel)]="user.houseNumner">
+        </mat-form-field>
+
+        <mat-form-field style="width:25%">
+            <mat-select placeholder="City" required [(ngModel)]="user.city" name="city">
+                <mat-option *ngFor="let city of cities" [value]="city">{{city}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <span class="number" *ngIf="house.errors?.pattern && house.dirty">Number must be a Positive number</span>
+
+    <button mat-button [disabled]="formInfo.form.invalid" (click)="ifExsitEmail()" color="primary">Submit registration</button>
+</form>

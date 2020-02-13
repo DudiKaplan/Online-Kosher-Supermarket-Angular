@@ -1,0 +1,54 @@
+.cart {
+    float: left;
+    width: 32vw;
+    height: 83vh;
+    margin: 2px;
+    overflow: auto;
+}
+
+.heder {
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border-bottom: 1px solid gray;
+    border-radius: 7px;
+}
+
+.icon-cart {
+    margin-top: 15px;
+    margin-left: 15px;
+    margin-right: 10px;
+}
+
+.footer {
+    height: 8vh;
+    width: 32vw;
+    display: flex;
+    justify-content: space-between;
+    background-color: white;
+    border-top: 1px solid gray;
+    border-radius: 7px;
+}
+
+.cart-main {
+    height: 66vh;
+    width: 32vw;
+    margin-top: 2px;
+    margin-bottom: 2px;
+    background-color: white;
+    border-radius: 7px;
+    overflow: auto;
+}
+
+mat-card {
+    margin-top: 1px;
+    margin-bottom: 1px;
+}
+
+.product-management {
+    height: 66vh;
+    width: 32vw;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}

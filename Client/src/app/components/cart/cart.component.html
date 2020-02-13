@@ -1,0 +1,53 @@
+<div class="cart mat-elevation-z8">
+
+    <!--case is user-->
+    <div *ngIf="user.isUser">
+        <div class="heder">
+            <mat-icon class="icon-cart">shopping_cart</mat-icon>
+            <p>My Cart</p>
+            <button mat-button (click)="backToHomePage()">back to home
+                <mat-icon >settings_backup_restore</mat-icon>
+            </button>
+        </div>
+
+        <div class="cart-main">
+            <mat-card *ngFor="let i of itemCart">
+                <mat-card-header>
+                    <div mat-card-avatar class="example-header-image">
+                        <img mat-card-image width="60px" height="70px" src="{{url}}/assets/images/{{i.imageName ? i.imageName : i.product.imageName}}">
+                    </div>
+                    <mat-card-subtitle>
+                        {{i.productName}} - X{{i.amount}} {{i.generalPrice | currency}}
+                        <button mat-icon-button color="accent" aria-label="Example icon-button with a heart icon">
+                            <mat-icon (click)="deleteItemCart(i._id)">close</mat-icon>
+                        </button>
+                    </mat-card-subtitle>
+                </mat-card-header>
+            </mat-card>
+        </div>
+
+        <div class="footer">
+            <p>Total: {{getTotalPrice() | currency}}</p>
+            <button mat-button (click)="deleteAllItemCart()">Clear Cart</button>
+            <button mat-button (click)="goToOrder()">Order</button>
+        </div>
+    </div>
+
+    <!--case is admin-->
+    <div *ngIf="!user.isUser">
+        <div class="heder">
+            <button mat-icon-button color="accent">
+                <mat-icon (click)="showAddProduct = true">add</mat-icon>
+            </button>
+            <p>Product management</p>
+            <button mat-button (click)="backToHomePage()">back to home
+                <mat-icon >settings_backup_restore</mat-icon>
+            </button>
+        </div>
+
+        <div class="product-management">
+            <app-edit-product *ngIf="product && product._id !== undefined"></app-edit-product>
+            <app-add-product (closeAddProductEvent)="closeAddProduct()" *ngIf="showAddProduct"></app-add-product>
+        </div>
+    </div>
+</div>

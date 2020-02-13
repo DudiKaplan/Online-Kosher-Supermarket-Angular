@@ -1,0 +1,1 @@
+{"options":{},"indexes":[{"v":{"$numberInt":"2"},"key":{"_id":{"$numberInt":"1"}},"name":"_id_","ns":"SupermarketOnline.Categories"}],"uuid":"6c4f1953803b46edb7358c340c8e0aaf"}

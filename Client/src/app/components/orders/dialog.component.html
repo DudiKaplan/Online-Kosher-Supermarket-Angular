@@ -1,0 +1,8 @@
+<div mat-dialog-content>
+    <p>Your order was successfully placed</p>
+    <p>Order ID: {{data.order_id}}</p>
+
+</div>
+<div mat-dialog-actions>
+    <button style="width:100%;height: 10%;background-color: pink;font-size: 25px;" [mat-dialog-close]="data.order_id" cdkFocusInitial mat-button color="accent">OK</button>
+</div>

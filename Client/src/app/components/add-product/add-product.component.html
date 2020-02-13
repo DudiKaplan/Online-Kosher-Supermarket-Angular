@@ -1,0 +1,30 @@
+<form #formInfo="ngForm" class="container mat-elevation-z8">
+    <mat-card-title class="title">Add Product</mat-card-title>
+
+    <mat-form-field>
+        <input type="text" matInput #nameInfo="ngModel" required pattern="^[A-Z].+$" placeholder="Product Name" name="name" [(ngModel)]="product.name" autofocus autocomplete="off">
+    </mat-form-field>
+    <span *ngIf="nameInfo.errors?.pattern && nameInfo.dirty">Min 2 Chars Capitalized</span>
+
+    <mat-form-field>
+        <mat-select placeholder="Category" required [(ngModel)]="product.category" name="category">
+            <mat-option *ngFor="let c of categories" [value]="c._id">
+                {{c.name}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input type="number" min="1" #price="ngModel" matInput required pattern="" placeholder="Product Price" name="houseNumner" [(ngModel)]="product.price">
+    </mat-form-field>
+    <span *ngIf="price.errors?.pattern && price.dirty">Price must be a Positive number</span>
+
+    <button type="button" mat-raised-button (click)="fileInput.click()">Choose Product Image</button>
+    <input hidden (change)="onFileSelect($event)" accept="image/*" #fileInput type="file" id="file">
+    <span *ngIf="fileInput.errors?.pattern && fileInput.dirty">Number must be a Positive number</span>
+
+    <span *ngIf="fileInput.dirty">File Is Required</span>
+
+    <br>
+    <button mat-button style="width:100%;height: 20%;background-color:blue;font-size: 25px;" [disabled]="formInfo.form.invalid" (click)="addProduct()" color="primary">Submit Product</button>
+</form>

@@ -1,0 +1,17 @@
+.header {
+    background-color: lightpink;
+}
+
+.main {
+    overflow: auto;
+}
+
+.menu {
+    background-color: lightslategray;
+    box-shadow: -7px 6px 10px 10px rgba(0, 0, 0, .38)
+}
+
+.footer {
+    background-color: lightpink;
+    box-shadow: -7px 6px 10px 10px rgba(0, 0, 0, .38)
+}

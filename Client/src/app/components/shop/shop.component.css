@@ -1,0 +1,16 @@
+mat-form-field.mat-form-field {
+    font-size: 25px;
+    color: hotpink;
+    width: 80px;
+    text-align: center;
+    margin-left: 60px;
+}
+
+.add-to-cart {
+    margin-left: 40px;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+    opacity: 1;
+}

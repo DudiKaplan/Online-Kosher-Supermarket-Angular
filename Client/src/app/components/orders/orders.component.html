@@ -1,0 +1,88 @@
+<!--details-->
+<div class="mat-elevation-z8 cart">
+    <mat-card-title>Cart Details</mat-card-title>
+    <hr>
+    <mat-card-subtitle [ngStyle]="{'color': 'red','margin-left':'70px'}">To make changes, return to the shopping page</mat-card-subtitle>
+    <button mat-button color="warn" (click)="goToShop()">back to shop
+        <mat-icon >settings_backup_restore</mat-icon>
+    </button>
+
+    <br>
+
+    <table mat-table [dataSource]="itemsCart">
+
+        <ng-container matColumnDef="Image">
+            <th mat-header-cell *matHeaderCellDef> Image </th>
+            <td mat-cell *matCellDef="let itemsCart">
+                <img width="45px" height="45px" src="{{url}}/assets/images/{{itemsCart.imageName ? itemsCart.imageName : itemsCart.product.imageName}}">
+            </td>
+            <td mat-footer-cell *matFooterCellDef> Total </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Name">
+            <th mat-header-cell *matHeaderCellDef> Name </th>
+            <td mat-cell *matCellDef="let itemsCart"> {{itemsCart.productName}} </td>
+            <td mat-footer-cell *matFooterCellDef></td>
+        </ng-container>
+
+        <ng-container matColumnDef="Amount">
+            <th mat-header-cell *matHeaderCellDef> Amount </th>
+            <td mat-cell *matCellDef="let itemsCart"> {{itemsCart.amount}} </td>
+            <td mat-footer-cell *matFooterCellDef> {{getTotalAmount()}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="General Price">
+            <th mat-header-cell *matHeaderCellDef> General Price </th>
+            <td mat-cell *matCellDef="let itemsCart"> {{itemsCart.generalPrice | currency}} </td>
+            <td mat-footer-cell *matFooterCellDef> {{getTotalPrice() | currency}} </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        <tr mat-footer-row *matFooterRowDef="displayedColumns"></tr>
+    </table>
+</div>
+
+<!--order-->
+<div class="mat-elevation-z8 order">
+    <form #formInfo="ngForm" style="width:60%">
+        <mat-card-title class="title">Order</mat-card-title>
+        <hr>
+        <br><br>
+
+        <mat-card-subtitle>Shipping Details:</mat-card-subtitle>
+        <hr>
+        <br><br>
+        <mat-form-field style="width:100%">
+            <mat-select placeholder="City" required [(ngModel)]="order.city" name="city">
+                <mat-option *ngFor="let city of cities" [value]="city">{{city}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field style="width:100%">
+            <input type="text" matInput #streetInfo="ngModel" required placeholder="Street" name="Street" [(ngModel)]="order.street">
+        </mat-form-field>
+
+        <br>
+
+        <mat-form-field style="width:100%">
+            <input type="date" matInput #shippingDateInfo="ngModel" required placeholder="Shipping Date" name="shippingDate" [min]="getTodayDate()" [(ngModel)]="order.shippingDate">
+        </mat-form-field>
+
+        <br>
+        <mat-card-subtitle>Payments:</mat-card-subtitle>
+        <hr>
+        <br><br>
+        <mat-form-field style="width:100%" appearance="outline" color="primary">
+            <mat-label>Credit Card</mat-label>
+            <input matInput required pattern="^[1-9]\d*$" type="tel" name="creditCard" color="primary" minlength="4" [(ngModel)]="order.creditCard">
+            <mat-icon matSuffix>payment</mat-icon>
+        </mat-form-field>
+
+        <br>
+        <button style="width:100%;height: 10%;background-color: pink;font-size: 25px;" mat-button [disabled]="formInfo.form.invalid" (click)="addOrder()" color="accent">Order</button>
+    </form>
+
+</div>

@@ -1,0 +1,31 @@
+.cart {
+    float: left;
+    width: 35vw;
+    height: 83vh;
+    margin: 2px;
+    overflow: auto;
+    background-color: white;
+}
+
+.order {
+    float: left;
+    width: 35vw;
+    height: 83vh;
+    margin: 2px;
+    overflow: auto;
+    background-color: whitesmoke;
+    display: flex;
+    justify-content: center;
+}
+
+table {
+    width: 100%;
+}
+
+tr.mat-footer-row {
+    font-weight: bold;
+}
+
+mat-card-title.mat-card-title {
+    margin-left: 35%;
+}

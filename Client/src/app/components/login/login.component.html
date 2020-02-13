@@ -1,0 +1,35 @@
+<div class="main_container">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>Let's start shopping</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form #formInfo="ngForm">
+                <!-- email -->
+                <mat-form-field appearance="outline" color="primary" [ngStyle]="errorLogin && {'color': 'red'}">
+                    <mat-label>Email</mat-label>
+                    <input matInput type="text" name="email" color="primary" minlength="6" autofocus required [(ngModel)]="credential.email" (keydown)="clearError()">
+                    <mat-icon matSuffix>alternate_email</mat-icon>
+                </mat-form-field>
+                <br>
+                <!-- password -->
+                <mat-form-field appearance="outline" color="primary" [ngStyle]="errorLogin && {'color': 'red'}">
+                    <mat-label>Password</mat-label>
+                    <input matInput type="password" name="password" color="primary" minlength="6" required [(ngModel)]="credential.password" (keydown)="clearError()">
+                    <mat-icon matSuffix>lock_open</mat-icon>
+                </mat-form-field>
+                <br>
+                <p *ngIf="errorLogin" [style.color]="'red'">{{errorLogin}}</p>
+                <!-- submit -->
+                <button mat-flat-button color="primary" class="mat-elevation-z2" [disabled]="formInfo.form.invalid" (click)="login()">Login</button>
+            </form>
+            <br>
+            <mat-card-footer>
+                <small>supermarket inc ®</small>
+                <small><a routerLink="/registration" routerLinkActive="active">Sign up now</a></small>
+            </mat-card-footer>
+            <br>
+        </mat-card-content>
+    </mat-card>
+</div>

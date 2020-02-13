@@ -1,0 +1,11 @@
+<div mat-dialog-content>
+    <p>How much do you want from the product?</p>
+    <mat-form-field appearance="outline">
+        <input matInput type="number" min="1" max="99" [(ngModel)]="data.amount">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button class="add-to-cart" color="primary" [mat-dialog-close]="data.amount" cdkFocusInitial>Add to Cart
+    <mat-icon>add_shopping_cart</mat-icon>
+  </button>
+</div>

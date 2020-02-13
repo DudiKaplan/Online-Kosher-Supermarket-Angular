@@ -1,0 +1,12 @@
+<div class="logo">
+    <img src="/assets/images/logo.jfif" alt="">
+</div>
+<div class="heder">
+    <h1>Kosher Online supermarket</h1>
+</div>
+<div class="details">
+    <div *ngIf="user && user.isUser">Hello {{user.firstName + " " + user.lastName}}</div>
+    <div *ngIf="user && user.isUser">{{user.email}}</div>
+    <div *ngIf="user && user.isUser">{{user.phone}}</div>
+    <p *ngIf="user && user.isUser == false">Hello Admin</p>
+</div>
